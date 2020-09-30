@@ -21,8 +21,8 @@ public class ServerInitializer extends ChannelInitializer {
         ChannelPipeline pipeline = ch.pipeline();
 
         pipeline.addLast("log", new LoggingHandler(LogLevel.INFO));
-        pipeline.addLast("idleStateHandler", new IdleStateHandler(30, 30, 0, TimeUnit.SECONDS));
-        pipeline.addLast("idleStateTrigger", HeartbeatHanlder.INSTANCE);
+        pipeline.addLast("idleStateHandler", new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
+        pipeline.addLast("HeartbeatHanlder", HeartbeatHanlder.INSTANCE);
 
         pipeline.addLast("http-codec", new HttpServerCodec());
         pipeline.addLast("aggregator", new HttpObjectAggregator(Integer.MAX_VALUE));

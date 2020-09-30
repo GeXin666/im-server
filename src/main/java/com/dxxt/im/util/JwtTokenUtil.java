@@ -9,10 +9,14 @@ import com.dxxt.im.config.AppConfig;
 public class JwtTokenUtil {
 
     public static String verifyToken(String token) {
-        Algorithm algorithm = Algorithm.HMAC256(AppConfig.jwtSecret);
-        JWTVerifier verifier = JWT.require(algorithm).build();
-        DecodedJWT jwt = verifier.verify(token);
-        return jwt.getClaim("userId").asString();
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(AppConfig.jwtSecret);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT jwt = verifier.verify(token);
+            return jwt.getClaim("userId").asString();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
 
