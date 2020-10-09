@@ -13,9 +13,6 @@ public class AppConfig {
     public static String redisIp;
     public static String jwtSecret;
     public static String redisChannel;
-    public static String rabbitMqIp;
-    public static int rabbitMqHost;
-    public static String rabbitMqQueueName;
 
     @Value("${im.zookeeper.url}")
     public void setZookeeperUrl(String zookeeperUrl) {
@@ -45,21 +42,6 @@ public class AppConfig {
     @Value("${im.jwt.secret}")
     public void setJwtSecret(String jwtSecret) {
         AppConfig.jwtSecret = jwtSecret;
-    }
-
-    @Value("${im.rabbitmq.ip}")
-    public void setRabbitMqIp(String rabbitMqIp) {
-        AppConfig.rabbitMqIp = rabbitMqIp;
-    }
-
-    @Value("${im.rabbitmq.host}")
-    public void setRabbitMqHost(int rabbitMqHost) {
-        AppConfig.rabbitMqHost = rabbitMqHost;
-    }
-
-    @Value("${im.rabbitmq.queue}")
-    public void setRabbitMqQueueName(String rabbitMqQueueName) {
-        AppConfig.rabbitMqQueueName = rabbitMqQueueName;
     }
 
     @Value("${im.redis.channel}")
