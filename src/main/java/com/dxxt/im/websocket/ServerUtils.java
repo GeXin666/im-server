@@ -16,6 +16,6 @@ public class ServerUtils {
 
     //推送消息
     public static void sendMessgae(final String clientId, final String message) {
-        channels.writeAndFlush(new TextWebSocketFrame(message), channel -> clientId.equals(channel.attr(userIDkey)));
+        channels.writeAndFlush(new TextWebSocketFrame(message), channel -> clientId.equals(channel.attr(userIDkey).get()));
     }
 }
